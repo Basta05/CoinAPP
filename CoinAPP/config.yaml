@@ -1,0 +1,206 @@
+# CoinScan – nastavení. Upravuj ideálně v appce (záložka Nastavení),
+# ruční úpravy tady fungují taky.
+active_preset: Migration play
+scanner:
+  scan_interval_sec: 60
+  chain: solana
+  sources:
+  - token_profiles
+  - token_boosts
+  - pumpfun
+  pumpfun_min_progress: 70
+basic_filters:
+  max_age_minutes: 180
+  min_liquidity_usd: 5000
+  max_liquidity_usd: 500000
+  min_mcap_usd: 0
+  max_mcap_usd: 1500000
+  min_volume_h1_usd: 5000
+  min_buys_m5: 10
+  min_buy_sell_ratio_h1: 1.0
+  require_socials: true
+stale_filter:
+  enabled: true
+  older_than_hours: 24
+  min_mcap_per_day_usd: 100000
+safety_filters:
+  enabled: true
+  max_rugcheck_score: 50
+  reject_mint_authority: true
+  reject_freeze_authority: true
+  max_top10_holders_pct: 30
+  reject_danger_risks: true
+  require_rugcheck: false
+llm:
+  enabled: true
+  min_confidence: 0.55
+  temperature: 0.2
+  max_free_per_hour: 15
+  free_timeout: 60
+  use_paid: true
+  report_web_search: true
+  max_usd_per_day: 2.0
+  jev_max_scam: 0.4
+  jev_min_potential: 1.4
+  require_jev_pass: true
+risk:
+  low_max: 35
+  medium_max: 65
+tracking:
+  interval_sec: 300
+  duration_hours: 24
+  target_multiple: 2.0
+  rug_drop_pct: 90
+  track_rejected: true
+alerts:
+  discord_enabled: false
+  only_verdict:
+  - BUY
+  max_risk_label: MEDIUM
+bot_filter:
+  enabled: true
+  hide: true
+  hide_unchecked: true
+  sensitivity: střední
+  columns:
+  - new
+  - soon
+  - migrated
+  min_age_sec: 30
+  window_sec: 600
+  recheck_sec: 90
+  checks_per_sec: 2
+  sticky: true
+  scanner: true
+gems:
+  enabled: true
+  columns:
+  - new
+  - soon
+  - migrated
+  watch_score: 50
+  buy_score: 65
+  report_min_jev: 50
+  max_jev_per_min: 30
+  auto_ai: true
+  ai_parallel: 3
+  from_scanner: true
+  track_fast_sec: 60
+  track_slow_sec: 300
+  slop_stop_min: 5
+  nonbuy_archive_min: 5
+  ai_retry_min: 5
+  ai_max_tries: 3
+  weights:
+    momentum: 1.0
+    activity: 1.0
+    volume: 1.0
+    bonding: 1.0
+    ath: 1.0
+    community: 1.0
+    room: 1.0
+    safety: 1.0
+  reanalyze_min: 30
+  popup_verdicts:
+  - BUY
+  min_confidence: 0.55
+  popup_score_without_ai: 80
+  require_bot_check: true
+  min_mcap: 5000
+  max_mcap: 2000000
+  min_age_min: 1
+  sweet_mcap_min: 8000
+  sweet_mcap_max: 150000
+  popup_sound: true
+  popup_seconds: 90
+watch:
+  jev_good: 55
+  long_max: 200
+  long_max_min: 15
+  long_check_sec: 20
+  long_improve_pts: 10
+  long_drop_pts: 15
+  long_mc_drop_pct: 50
+  confirm_checks: 2
+  short_cycle_sec: 30
+  short_jev_every: 2
+  short_drop_pts: 10
+  short_jev_drop: 25
+  short_max_min: 30
+  gem_exit_drop_pct: 40
+  jev_low_share: 70
+buy_tracking:
+  enabled: true
+  cycle_sec: 20
+  deep_cycles: 5
+  jev_every_cycles: 2
+  jev_max_updates: 10
+  ai_updates: true
+  ai_every_cycles: 10
+  ai_max_updates: 3
+  ai_allow_paid: false
+  popup_actions:
+  - SELL
+  - TAKE_PROFIT
+runners:
+  enabled: true
+  interval_min: 10
+  min_mcap: 300000
+  max_age_hours: 24
+  max_per_scan: 10
+  ai_postmortem: true
+pulse:
+  poll_sec: 2
+  websocket: true
+  default_timeframe: 15s
+  max_coins: 1500
+  keep_hours: 6
+  soon_progress: 60
+  auto_rugcheck:
+  - soon
+  - migrated
+  rugcheck_per_min: 10
+  columns:
+    new:
+      min_mcap: 5000
+      max_mcap: 0
+      max_age_min: 30
+      min_progress: 0
+      require_socials: false
+      min_replies: 0
+      max_risk: HIGH
+      hide_keywords: ''
+    soon:
+      min_mcap: 0
+      max_mcap: 0
+      max_age_min: 240
+      min_progress: 60
+      require_socials: true
+      min_replies: 0
+      max_risk: HIGH
+      hide_keywords: ''
+    migrated:
+      min_mcap: 30000
+      max_mcap: 0
+      max_age_min: 720
+      min_progress: 0
+      require_socials: true
+      min_replies: 0
+      max_risk: MEDIUM
+      hide_keywords: ''
+risk_mgmt:
+  bankroll_sol: 5.0
+  risk_per_trade_pct: 2.0
+  stop_loss_pct: 35
+  max_position_pct: 10
+  label_multiplier:
+    LOW: 1.0
+    MEDIUM: 0.6
+    HIGH: 0.3
+  take_profits:
+  - - 2.0
+    - 50
+  - - 4.0
+    - 25
+  max_open_positions: 5
+  daily_loss_limit_pct: 10

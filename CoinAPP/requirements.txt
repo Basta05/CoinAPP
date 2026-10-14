@@ -1,0 +1,5 @@
+PySide6>=6.6
+requests>=2.31
+PyYAML>=6.0
+python-dotenv>=1.0
+websocket-client>=1.7
